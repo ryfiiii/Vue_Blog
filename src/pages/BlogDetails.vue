@@ -25,11 +25,6 @@ export default {
     props: [
         "id",
     ],
-    mounted() {
-        this.$nextTick(() => {
-            Prism.highlightAll();
-        });
-    },
     data() {
         return {
             post: [],
