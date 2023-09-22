@@ -31,7 +31,7 @@ export default {
         };
     },
     async mounted() {
-        const apiKey = import.meta.env.VITE_API_KEY
+        const apiKey = import.meta.env.VITE_MICROCMS_API_KEY
         const response = await axios.get(`https://ryfiii-blog.microcms.io/api/v1/blog/${this.id}`, {
             headers: { 'X-API-KEY': apiKey }
         });
