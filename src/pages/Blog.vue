@@ -32,10 +32,10 @@ export default {
     },
     async mounted() {
         const apiKey = import.meta.env.VITE_API_KEY
+        console.log(apiKey)
         const response = await axios.get('https://ryfiii-blog.microcms.io/api/v1/blog', {
             headers: { 'X-API-KEY': apiKey },
         });
-        console.log(response.data.contents)
         this.posts = response.data.contents;
     },
     methods: {
