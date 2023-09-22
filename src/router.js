@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router"
 
-import Blog from "./pages/Blog.vue"
+import MyBlog from "./pages/MyBlog.vue"
 import BlogDetails from "./pages/BlogDetails.vue"
 
 const router = createRouter({
@@ -8,7 +8,7 @@ const router = createRouter({
     routes: [
       {
         path: "/",
-        component: Blog,
+        component: MyBlog,
       },
       {
         path: "/blog/:id",
