@@ -33,7 +33,7 @@ export default {
     async mounted() {
         const apiKey = import.meta.env.VITE_API_KEY
         const response = await axios.get(`https://ryfiii-blog.microcms.io/api/v1/blog/${this.id}`, {
-            headers: { 'X-API-KEY': dYBmbQuI1zkD6gSiAiwqi5NparqBoTDS0TQf }
+            headers: { 'X-API-KEY': "dYBmbQuI1zkD6gSiAiwqi5NparqBoTDS0TQf" }
         });
         this.post = response.data;
     },
