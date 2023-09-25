@@ -50,16 +50,25 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../scss/validate-function";
+
 #blogdetails {
     background-color: #fff;
-    width: 1000px;
+    width: 950px;
     margin-bottom: 50px;
     padding-top: 50px;
     color: #7b7b7b;
+    @include mq(){
+        width: 320px;
+        padding-top: 30px;
+    }
 
     .publishedAt {
         text-align: center;
         font-size: 1.1rem;
+        @include mq(){
+            font-size: 1.0rem;
+        }
     }
 
     .title {
@@ -68,6 +77,11 @@ export default {
         font-weight: 700;
         padding: 0 100px;
         text-align: center;
+        @include mq(){
+            font-size: 1.2rem;
+            padding: 0 25px;
+            margin-top: 15px;
+        }
     }
 
     .thumbnail {
@@ -77,12 +91,23 @@ export default {
             width: 800px;
             height: 400px;
             object-fit: cover;
+            @include mq(){
+                width: 320px;
+                height: 180px;
+            }
+        }
+        @include mq(){
+            margin-top: 25px;
         }
     }
 
     .body {
         margin: 100px 0;
         padding: 0 150px;
+        @include mq(){
+            margin: 30px 0;
+            padding: 0 20px;
+        }
 
         li, span, a , img {
             margin-top: 5px;
@@ -99,6 +124,9 @@ export default {
         border-radius: 15px;
         padding: 16px;
         overflow-x: auto;
+        @include mq(){
+            overflow: scroll;
+        }
         }
 
         code {

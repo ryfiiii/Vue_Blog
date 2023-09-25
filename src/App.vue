@@ -27,10 +27,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "./scss/validate-function";
+
 #content {
   display: flex;
   justify-content: center;
   background-color: #f0f0f0;
+  @include mq {
+      flex-direction: column;
+  }
   
   #main {
     padding: 50px;
@@ -42,6 +47,9 @@ export default {
 
   #category {
     padding-top: 50px;
+    @include mq {
+      padding-top: 0;
+    }
   }
 }
 </style>

@@ -21,6 +21,8 @@
 <script>
 </script>
 <style scoped lang="scss">
+@import "../scss/validate-function";
+
 #categorybar{
     background-color: white;
     width: 200px;
@@ -29,15 +31,24 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    @include mq {
+      width: 100%;
+    }
 
     p{
         margin-bottom: 20px;
         font-size: 1.2rem;
+        @include mq {
+            font-size: 1.5rem;
+        }
     }
     a {
         display: block;
         color: black;
         margin-bottom: 5px;
+        @include mq {
+            font-size: 1.2rem;
+        }
     }
 }
 </style>

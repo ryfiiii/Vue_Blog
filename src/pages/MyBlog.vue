@@ -54,7 +54,6 @@ export default {
                 this.posts = this.posts.filter(post => {
                     return post.category.some(cat => cat.category === this.category);
                 });
-                console.log(this.posts)
             }
         },
         createdDateString(cAt) {
@@ -81,6 +80,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../scss/validate-function";
+
 .blog {
     background-color: #fff;
     width: 700px;
@@ -88,9 +89,16 @@ export default {
     padding-top: 50px;
     text-align: center;
     color: #7b7b7b;
+    @include mq(){
+        width: 320px;
+        padding-top: 30px;
+    }
 
     .publishedAt {
         font-size: 1.1rem;
+        @include mq(){
+            font-size: 1.0rem;
+        }
     }
 
     .title {
@@ -98,6 +106,11 @@ export default {
         font-size: 1.5rem;
         font-weight: 700;
         padding: 0 80px;
+        @include mq(){
+            font-size: 1.2rem;
+            padding: 0 25px;
+            margin-top: 15px;
+        }
     }
 
     .thumbnail {
@@ -106,12 +119,23 @@ export default {
             width: 700px;
             height: 350px;
             object-fit: cover;
+            @include mq(){
+                width: 320px;
+                height: 180px;
+            }
+        }
+        @include mq(){
+            margin-top: 25px;
         }
     }
 
     .details {
         margin-top: 50px;
         padding: 0 100px;
+        @include mq(){
+            margin-top: 25px;
+            padding: 0 25px;
+        }
     }
 
     .readmore {
@@ -125,6 +149,9 @@ export default {
                 text-decoration: underline;
                 color: #373737;
             }
+        }
+        @include mq(){
+            margin: 30px 0 40px 0;
         }
     }
 }
