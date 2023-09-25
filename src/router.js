@@ -11,6 +11,11 @@ const router = createRouter({
         component: MyBlog,
       },
       {
+        path: "/:category",
+        component: MyBlog,
+        props: true,
+      },
+      {
         path: "/blog/:id",
         component: BlogDetails,
         props: true,

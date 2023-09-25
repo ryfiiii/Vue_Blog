@@ -17,7 +17,6 @@
                 ReadMore
             </router-link>
         </div>
-        <!-- <div v-html="post.body"></div> -->
     </div>
 </template>
 
@@ -30,14 +29,34 @@ export default {
             posts: [],
         };
     },
+    props: [
+        "category"
+    ],
     async mounted() {
-        const apiKey = import.meta.env.VITE_MICROCMS_API_KEY
-        const response = await axios.get('https://ryfiii-blog.microcms.io/api/v1/blog', {
-            headers: { 'X-API-KEY': apiKey },
-        });
-        this.posts = response.data.contents;
+        await this.getBlog()
+    },
+    watch: {
+        async category(newVal, oldVal){
+            if(newVal !== oldVal){
+                await this.getBlog()
+            }
+        }
     },
     methods: {
+        async getBlog(){
+            const apiKey = import.meta.env.VITE_MICROCMS_API_KEY
+            const response = await axios.get('https://ryfiii-blog.microcms.io/api/v1/blog', {
+                headers: { 'X-API-KEY': apiKey },
+            });
+            this.posts = response.data.contents;
+
+            if(this.category){
+                this.posts = this.posts.filter(post => {
+                    return post.category.some(cat => cat.category === this.category);
+                });
+                console.log(this.posts)
+            }
+        },
         createdDateString(cAt) {
             const createdAt = new Date(cAt);
             const createdYear = createdAt.getFullYear();
