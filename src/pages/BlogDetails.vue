@@ -106,7 +106,7 @@ export default {
         padding: 0 150px;
         @include mq(){
             margin: 30px 0;
-            padding: 0 20px;
+            padding: 0 30px;
         }
 
         li, span, a , img {
