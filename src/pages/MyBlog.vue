@@ -1,21 +1,28 @@
 <template>
-    <div v-for="post in posts" :key="post.id" class="blog">
-        <div class="publishedAt">
-            <p>{{ createdDateString(post.publishedAt) }}</p>
+    <div v-if="posts">
+        <div v-for="post in posts" :key="post.id" class="blog">
+            <div class="publishedAt">
+                <p>{{ createdDateString(post.publishedAt) }}</p>
+            </div>
+            <div class="title">
+                <p>{{ post.title }}</p>
+            </div>
+            <div class="thumbnail">
+                <img :src="post.thumbnail.url">
+            </div>
+            <div class="details">
+                <p>{{ trimHtmlText(post.body) }}</p>
+            </div>
+            <div class="readmore">
+                <router-link :to="`/blog/${post.id}`">
+                    ReadMore
+                </router-link>
+            </div>
         </div>
-        <div class="title">
-            <p>{{ post.title }}</p>
-        </div>
-        <div class="thumbnail">
-            <img :src="post.thumbnail.url">
-        </div>
-        <div class="details">
-            <p>{{ trimHtmlText(post.body) }}</p>
-        </div>
-        <div class="readmore">
-            <router-link :to="`/blog/${post.id}`">
-                ReadMore
-            </router-link>
+    </div>
+    <div v-else>
+        <div class="loading">
+            <p>Loading...</p>
         </div>
     </div>
 </template>
@@ -26,7 +33,7 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            posts: [],
+            posts: null,
         };
     },
     props: [
@@ -79,7 +86,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../scss/validate-function";
 
 .blog {
@@ -87,6 +94,7 @@ export default {
     width: 700px;
     margin-bottom: 50px;
     padding-top: 50px;
+    padding-bottom: 1px;
     text-align: center;
     color: #7b7b7b;
     @include mq(){
@@ -154,5 +162,16 @@ export default {
             margin: 30px 0 40px 0;
         }
     }
+}
+
+.loading {
+    background-color: #fff;
+    width: 700px;
+    color: #7b7b7b;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
 }
 </style>

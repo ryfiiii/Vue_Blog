@@ -13,7 +13,9 @@
             <div v-html="post.body" class="body"></div>
         </div>
         <div v-else>
-            Loading...
+            <div class="loading">
+                <p>Loading...</p>
+            </div>
         </div>
     </div>
 </template>
@@ -27,7 +29,7 @@ export default {
     ],
     data() {
         return {
-            post: [],
+            post: null,
         };
     },
     async mounted() {
@@ -49,7 +51,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../scss/validate-function";
 
 #blogdetails {
@@ -140,5 +142,11 @@ export default {
         line-height: 1.5;
         }
     }
+}
+
+.loading {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.5rem;
 }
 </style>
